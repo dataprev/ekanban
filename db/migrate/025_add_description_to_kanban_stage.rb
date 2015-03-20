@@ -1,5 +1,5 @@
 class AddDescriptionToKanbanStage < ActiveRecord::Migration
   def change
-  	add_column :kanban_stages, :description, :text, :limit => 128
+    add_column :kanban_stages, :description, :text
   end
 end

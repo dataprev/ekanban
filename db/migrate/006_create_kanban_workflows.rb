@@ -4,7 +4,7 @@ class CreateKanbanWorkflows < ActiveRecord::Migration
       t.integer :old_state_id
       t.integer :new_state_id
       t.boolean :check_role
-      t.integer :check_wip_limit
+      t.boolean :check_wip_limit
       t.integer :role_id
     end
   end
