@@ -17,7 +17,7 @@
       .newline
         = label_tag "Verifier: "
         = select_tag "verifier_id",  options_from_collection_for_select(@principals,"id", "name")
-      .newline  
+      .newline
         = label_tag "Version: "
         = select_tag "version_id",  options_from_collection_for_select(@versions,"id", "name")
       .newline
@@ -26,9 +26,9 @@
         = calendar_for(:start_date_)
       .newline
         = label_tag "Due_date: "
-        = text_field_tag :due_date_, " ", :size => 10
+        = text_field_tag :due_date_, " ", :size => 10, :type => "date"
         = calendar_for(:due_date_)
-      .newline  
+      .newline
         = label_tag "Est Hours:"
         = text_field_tag :est_hours, " ", :size => 3
 

@@ -322,7 +322,7 @@ function initCardJournals(card,sender,journals){
     }
     json.push({name:p.name, desc:"", values:data});
   }
-  
+
   return json;
 }
 
@@ -420,7 +420,7 @@ function renderPopupCard(popup,card,action,sender,receiver){
       popup.find("select#issue_status_id").val(card.find("#issue_status_id").val());
       popup.find("select#kanban_state_id").val(card.find("#kanban_state_id").val());
       var pane_id = sender.attr("id").match(/\d+$/)[0];
-      popup.find("#kanban_pane_id").val(pane_id);      
+      popup.find("#kanban_pane_id").val(pane_id);
     }else if (action == 'drop'){
       // Change the assignee to me
       var pane_id = receiver.attr("id").match(/\d+$/)[0];
@@ -447,7 +447,7 @@ function renderPopupCard(popup,card,action,sender,receiver){
       m = today.getMonth() + 1;
       d = today.getDate();
       y = today.getFullYear();
-      date = y + '/' + (m < 10? '0':'') + m + '/' + (d < 10 ? '0':'') + (d);
+      date = y + '-' + (m < 10? '0':'') + m + '-' + (d < 10 ? '0':'') + (d);
       start_date.css("required",true);
       start_date.val(date);
     }
@@ -457,7 +457,7 @@ function renderPopupCard(popup,card,action,sender,receiver){
       m = today.getMonth() + 1;
       d = today.getDate();
       y = today.getFullYear();
-      date = y + '/' + (m < 10? '0':'') + m + '/' + (d < 10 ? '0':'') + (d);
+      date = y + '-' + (m < 10? '0':'') + m + '-' + (d < 10 ? '0':'') + (d);
       due_date.val(date);
     }
 
