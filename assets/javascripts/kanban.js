@@ -185,6 +185,7 @@ function popupCard(fromPane,toPane,card,popup,event)
 {
   renderPopupCard(popup,card,event,fromPane,toPane);
   var isModal = (event == "drop")? true : false;
+
   //var w = (event == "drop")? "auto" : "1024px";
   //var h = (event == "drop")? "auto" : "720px";
   var w = "1024px";
@@ -193,7 +194,13 @@ function popupCard(fromPane,toPane,card,popup,event)
     //modal: isModal,
     width: w,
     //height: h,
+    close: function( e, ui ) {
+      if (event === "drop" && !$(e.target).dialog('option', 'success')) {
+        fromPane.sortable('cancel');
+      }
+    }
   });
+  popup.dialog('option', 'success', false);
 }
 
 /* Ajax call */

@@ -1,6 +1,7 @@
 $("#ajax-indicator").hide();
 - if @saved
   :plain
+    $("#popupWindow").dialog("option", "success", true);
     $("#popupWindow").dialog("close");
     getUserWipAndLimit($("#my-profile").data("user").user.id);
     $("#popupWindow").find("#errorExplanation").hide();
