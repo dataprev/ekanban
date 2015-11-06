@@ -20,7 +20,11 @@ class KanbanCardsController < ApplicationController
     Issue.transaction do
       # TODO: Rename hook
       #must save @issue first, otherwise, the wip check will failed.
-      return @card.save && @journal.save if @issue.save
+      save = @card.save if @issue.save
+
+      # Sometimes journal has nothing to save and return false
+      @journal.save
+      return save
     end
     false
   end
@@ -53,8 +57,11 @@ class KanbanCardsController < ApplicationController
     KanbanCardJournal.build(old_card,@card,@journal) if @saved == true
 
     if !@saved
+      # All models errors must be exposed
       @errors = ""
       @issue.errors.full_messages.each {|s| @errors += (s + ";")}
+      @card.errors.full_messages.each {|s| @errors += (s + ";")}
+      @journal.errors.full_messages.each {|s| @errors += (s + ";")}
     end
   	respond_to do |format|
       format.json do
