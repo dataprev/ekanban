@@ -18,13 +18,9 @@ function kanban_init()
       if (!ui.item.hasClass('acceptable')){
         ui.sender.sortable("cancel");
       }else{
-        if (!confirm("Are you sure? Click 'OK' will update the moving to server")){
-          ui.sender.sortable("cancel");
-        }else{
-          var popup = $("#popupWindow");
-          popupCard(ui.sender,$(this),ui.item,popup,"drop");
-          updatePanesWip(ui.sender,$(this));
-        }
+        var popup = $("#popupWindow");
+        popupCard(ui.sender,$(this),ui.item,popup,"drop");
+        updatePanesWip(ui.sender,$(this));
       }
     },
     remove: function(event,ui){
@@ -478,6 +474,11 @@ function renderPopupCard(popup,card,action,sender,receiver){
     popup.find("#est_hours").val(card.find("#est_hours").val());
 
   }
+}
+
+function closePopupCard() {
+  $('#popupWindow').dialog('close');
+  return false;
 }
 
 function init_wip(kanban_id,json){

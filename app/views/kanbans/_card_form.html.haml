@@ -41,4 +41,6 @@
         = label_tag "Comment:"
         = text_area "comment", "notes"
         = hidden_field_tag "issue_id", 0
-      .newline#popupSubmit{:style => "width:auto"}= submit_tag("Save")
+      .newline
+        #popupSubmit{:style => "width:auto;display:inline-block"}= submit_tag("Save")
+        #popupCancel{:style => "width:auto;display:inline-block;padding:4px"}= button_tag("Cancel", :type => 'button', :onclick => "closePopupCard()")
