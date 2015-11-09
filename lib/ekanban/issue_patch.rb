@@ -118,7 +118,7 @@ module EKanban
           issue = self.dup
           assignee = issue.assigned_to
 
-          card = KanbanCard.find_by_issue_id(issue.id)
+          card = KanbanCard.find_by_issue_id(self.id)
           kanban = Kanban.find_by_project_id_and_tracker_id_and_is_valid(issue.project_id,issue.tracker_id,true)
           #only apply to issue with kanban created.
           return true if kanban.nil?
@@ -138,7 +138,7 @@ module EKanban
             end
           end
 
-          new_state = IssueStatusKanbanState.state_id(issue.status_id, issue.tracker_id)
+          new_state = IssueStatusKanbanState.state_id_new(issue.status_id, issue.tracker_id, self.id)
           new_pane = KanbanPane.pane_by(new_state,kanban)
           if new_pane.nil?
             errors[:status_id] = ":No Kanban Pane found that associated with this status, check your kanban setting!"
